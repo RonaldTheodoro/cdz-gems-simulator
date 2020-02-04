@@ -1,77 +1,66 @@
-function calcGems(value) {
-  const gems = parseInt(value, 10);
-  let totalGems = gems;
-  let calcGems = null;
+function Calc() {
+  this.total = 0;
+  this.list = document.getElementById('results');
 
-  if (totalGems >= 20) {
-    calcGems = calc(totalGems, 21, 28);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
+  this.calcGems = function(value) {
+    this.total = parseInt(value, 10);
+    let randomGems = null;
+
+    if (this.total >= 20) {
+      randomGems = this.calc(21, 28);
+      this.addToList(20, 28, randomGems);
+    }
+    
+    if (this.total >= 30) {
+      randomGems = this.calc(31, 48);
+      this.addToList(30, 48, randomGems);
+    }
+    
+    if (this.total >= 65) {
+      randomGems = this.calc(66, 88);
+      this.addToList(65, 88, randomGems);
+    }
+    
+    if (this.total >= 150) {
+      randomGems = this.calc(151, 188);
+      this.addToList(150, 188, randomGems);
+    }
+    
+    if (this.total >= 240) {
+      randomGems = this.calc(241, 288);
+      this.addToList(240, 288, randomGems);
+    }
+    
+    if (this.total >= 330) {
+      randomGems = this.calc(331, 388);
+      this.addToList(330, 388, randomGems);
+    }
+    
+    if (this.total >= 500) {
+      randomGems = this.calc(501, 588);
+      this.addToList(500, 588, randomGems);
+    }
+    
+    if (this.total >= 660) {
+      randomGems = this.calc(661, 888);
+      this.addToList(660, 888, randomGems);
+    }
+
   }
 
-  if (totalGems >= 30) {
-    calcGems = calc(totalGems, 31, 48);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
+  this.calc = function(min, max) {
+    let random = Math.floor(min + Math.random()*(max + 1 - min));
+    let ganhou = Math.abs((Number(random) - (Number(min) - 1)));
+    this.total = Number(this.total) + ganhou;
+    return random;
   }
 
-  if (totalGems >= 65) {
-    calcGems = calc(totalGems, 66, 88);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
-  }
-
-  if (totalGems >= 150) {
-    calcGems = calc(totalGems, 151, 188);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
-  }
-
-  if (totalGems >= 240) {
-    calcGems = calc(totalGems, 241, 288);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
-  }
-
-  if (totalGems >= 330) {
-    calcGems = calc(totalGems, 331, 388);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
-  }
-
-  if (totalGems >= 500) {
-    calcGems = calc(totalGems, 501, 588);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
-  }
-
-  if (totalGems >= 660) {
-    calcGems = calc(totalGems, 661, 888);
-    totalGems += calcGems.ganho;
-    console.log('randomGems', calcGems.randomGems);
-    console.log('ganho', calcGems.ganho);
-    console.log('total', calcGems.total);
+  this.addToList = function(min, max, value) {
+    let li = document.createElement('li');
+    li.appendChild(document.createTextNode(`Roll ${min} a ${max} = ${value}`));
+    this.list.appendChild(li);
   }
 
 }
 
-function calc(gems, min, max) {
-  let randomGems = Math.floor(min + Math.random() * (max + 1 - min));
-  let total = Number(gems) + Math.abs((Number(randomGems) - (Number(min) - 1)));
-  let ganho = Number(total) - Number(gems);
-  return {randomGems, total, ganho};
-}
+const calc = new Calc();

@@ -3,6 +3,7 @@ function Calc() {
   this.list = document.getElementById('results');
 
   this.calcGems = function(value) {
+    this.cleanList();
     this.total = parseInt(value, 10);
     let randomGems = null;
 
@@ -46,6 +47,12 @@ function Calc() {
       this.addToList(660, 888, randomGems);
     }
 
+  }
+
+  this.cleanList = function() {
+    while (this.list.firstChild) {
+      this.list.removeChild(this.list.firstChild);
+    }
   }
 
   this.calc = function(min, max) {

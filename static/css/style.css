@@ -4,3 +4,7 @@ main {
   justify-content: center;
   flex-direction: column;
 }
+
+ol {
+  list-style: none;
+}

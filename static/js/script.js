@@ -6,6 +6,7 @@ function Calc() {
   this.calcGems = function(value) {
     this.cleanList();
     this.total = parseInt(value, 10);
+    this.gemasObtidas = 0;
     let randomGems = null;
 
     if (this.total >= 20) {

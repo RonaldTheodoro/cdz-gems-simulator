@@ -64,6 +64,7 @@ function Calc() {
 
   this.addToList = function(min, max, value) {
     let li = document.createElement('li');
+    li.classList.add('item');
     li.appendChild(document.createTextNode(`Roll ${min} a ${max} = ${value}`));
     this.list.appendChild(li);
   }

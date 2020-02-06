@@ -1,5 +1,6 @@
 function Calc() {
   this.total = 0;
+  this.gemasObtidas = 0;
   this.list = document.getElementById('results');
 
   this.calcGems = function(value) {
@@ -47,6 +48,9 @@ function Calc() {
       this.addToList(660, 888, randomGems);
     }
 
+    this.createHTMLItem(`Gemas recebidas = ${this.gemasObtidas}`);
+    this.createHTMLItem(`Total = ${this.total}`);
+
   }
 
   this.cleanList = function() {
@@ -58,6 +62,7 @@ function Calc() {
   this.calc = function(min, max) {
     let random = Math.floor(min + Math.random()*(max + 1 - min));
     let ganhou = Math.abs((Number(random) - (Number(min) - 1)));
+    this.gemasObtidas += ganhou;
     this.total = Number(this.total) + ganhou;
     return random;
   }

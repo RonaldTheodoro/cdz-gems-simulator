@@ -48,8 +48,8 @@ function Calc() {
       this.addToList(660, 888, randomGems);
     }
 
-    this.createHTMLItem(`Gemas recebidas = ${this.gemasObtidas}`);
-    this.createHTMLItem(`Total = ${this.total}`);
+    this.createHTMLItem(`Gemas recebidas: ${this.gemasObtidas}`);
+    this.createHTMLItem(`Total: ${this.total}`);
 
   }
 
@@ -68,7 +68,7 @@ function Calc() {
   }
 
   this.addToList = function(min, max, value) {
-    this.createHTMLItem(`Roll ${min} a ${max} = ${value}`);
+    this.createHTMLItem(`Roll ${min} a ${max}: ${value}`);
   }
 
   this.createHTMLItem = function(text) {
